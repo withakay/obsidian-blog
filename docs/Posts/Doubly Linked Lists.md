@@ -1,3 +1,5 @@
+# Doubly Linked Lists
+
 A doubly linked list is a data structure that contains a collection of nodes which each hold a reference to the previous and next node in the list. In addition to these references the node will contain some data (or a reference to some data). The two references (or links) to the previous and next nodes are what give this data structure its name.
 
 In python we could model a node like so:
