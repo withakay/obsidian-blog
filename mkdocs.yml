@@ -2,8 +2,11 @@ site_name: Thoughts unlimited
 
 theme:
     name: 'material'
+    features:
+      - toc.integrate
     icon:
       logo: material/weather-sunset-down
+
     palette:
 
     # Light mode
@@ -53,6 +56,7 @@ plugins:
   - search
   - roamlinks 
   - mermaid2
+  - tags:
 
 extra_javascript:
   - javascripts/mathjax.js

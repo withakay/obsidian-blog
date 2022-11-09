@@ -1,3 +1,9 @@
+---
+tags:
+  - python
+  - data-structures
+  - cs
+---
 # Doubly Linked Lists
 A doubly linked list is a data structure that contains a collection of nodes which each hold a reference to the previous and next node in the list. In addition to these references the node will contain some data (or a reference to some data). The two references (or links) to the previous and next nodes are what give this data structure its name.
 
@@ -214,5 +220,3 @@ class DLLWithSentinel:
                 return node  
             node = node.next if forwards else node.prev
 ```
-
-### Tags: #datastructures #cs #python
