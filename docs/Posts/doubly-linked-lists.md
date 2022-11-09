@@ -1,5 +1,4 @@
 # Doubly Linked Lists
-
 A doubly linked list is a data structure that contains a collection of nodes which each hold a reference to the previous and next node in the list. In addition to these references the node will contain some data (or a reference to some data). The two references (or links) to the previous and next nodes are what give this data structure its name.
 
 In python we could model a node like so:
@@ -23,7 +22,7 @@ There are various ways to implement doubly linked lists, in the following text I
 
 With this method the node at the head of the list will never have a reference to a previous node and the node at the tail of the list will not have a reference to a next node. Armed with this knowledge we can start to implement a solution. 
 
-```python
+``` python
 class DLL:
     def __init__(self):  
         self.head: Optional[Node] = None  

@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.5.9" name="generator"/>
+<title>Doubly Linked Lists - obsidian-mkdocs template</title>
+<link href="../../assets/stylesheets/main.20d9efc8.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.08040f6c.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="yellow" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#doubly-linked-lists">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="obsidian-mkdocs template" class="md-header__button md-logo" data-md-component="logo" href="../.." title="obsidian-mkdocs template">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            obsidian-mkdocs template
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Doubly Linked Lists
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="yellow" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="lime" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="yellow" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="obsidian-mkdocs template" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="obsidian-mkdocs template">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    obsidian-mkdocs template
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Obsidian Notes
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2">
+          Features
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Features" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Features
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Features/LaTeX%20Math%20Support/">
+        LaTeX Math Support
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Features/Mermaid%20Diagrams/">
+        Mermaid diagrams
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Features/Text%20Formatting/">
+        Text Formatting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3">
+          Posts
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Posts" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Posts
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Doubly Linked Lists
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Doubly Linked Lists
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#null-terminated-head-and-tail-nodes">
+    Null terminated head and tail nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-a-sentinel-node">
+    Using a sentinel node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#full-code-for-both-implementations">
+    Full code for both implementations
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#null-terminated-head-and-tail-nodes">
+    Null terminated head and tail nodes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-a-sentinel-node">
+    Using a sentinel node
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#full-code-for-both-implementations">
+    Full code for both implementations
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="doubly-linked-lists">Doubly Linked Lists<a class="headerlink" href="#doubly-linked-lists" title="Permanent link">¶</a></h1>
+<p>A doubly linked list is a data structure that contains a collection of nodes which each hold a reference to the previous and next node in the list. In addition to these references the node will contain some data (or a reference to some data). The two references (or links) to the previous and next nodes are what give this data structure its name.</p>
+<p>In python we could model a node like so:</p>
+<pre><code class="language-python">class Node:  
+    def __init__(self, value: Optional[any] = None):  
+        self.prev: Optional[Self] = None  
+        self.next: Optional[Self] = None  
+        self.value: any = value
+</code></pre>
+<p><em>A node could also be modelled using a simple 3 elements list e.g. <code>[PREV, NEXT, DATA]</code> but in the interest of readability I will use the class based approach.</em></p>
+<p>There are various ways to implement doubly linked lists, in the following text I will out line two common methods, the first uses null terminated <code>head</code> and <code>tail</code> nodes. The <code>head</code> represents the first node in the list and the <code>tail</code> the last.</p>
+<h3 id="null-terminated-head-and-tail-nodes">Null terminated head and tail nodes<a class="headerlink" href="#null-terminated-head-and-tail-nodes" title="Permanent link">¶</a></h3>
+<p><img alt="null_terminated_linked_list_1.jpg.jpeg" src="../images/null_terminated_linked_list_1.jpg.jpeg"/>
+<em>Fig 1. Shows a representation of a doubly linked list with null terminated head and tail nodes</em></p>
+<p>With this method the node at the head of the list will never have a reference to a previous node and the node at the tail of the list will not have a reference to a next node. Armed with this knowledge we can start to implement a solution. </p>
+<pre><code class="language-python">class DLL:
+    def __init__(self):  
+        self.head: Optional[Node] = None  
+        self.tail: Optional[Node] = None
+
+    def insert_before(self, existing_node: Node, new_node: Node):  
+        new_node.next = existing_node  
+        if not existing_node.prev:  
+            self.head = new_node  
+        else:  
+            new_node.prev = existing_node.prev  
+            new_node.prev.next = new_node  
+        existing_node.prev = new_node  
+
+    def insert_first(self, new_node: Node):  
+        if not self.head:  
+            self.head = new_node  
+            self.tail = new_node  
+            new_node.prev = None  
+            new_node.next = None  
+        else:  
+            self.insert_before(self.head, new_node)
+</code></pre>
+<p>First we create a class with attributes for the head and tail nodes and initialise these to <code>None</code>.
+In the code above we have implemented <code>insert_before</code> and <code>insert_first</code> methods. As this implementation starts out with <code>head</code> as <code>None</code> we have to carry out some null checking and branch accordingly. Looking at <code>insert_first</code> we can see that on first run <code>head</code> will always be <code>None</code> so in that case <code>head</code> should be set to the new node, as will <code>tail</code>. This looks a little odd at first, but if the list only has one node that node is indeed both the <code>head</code> and the <code>tail</code>. If we were to call <code>insert_first</code> with another new node <code>head</code> would no longer be <code>None</code> and the code would branch to call <code>insert_before(self.head, new_node)</code>. The first thing to do in <code>insert_before</code> is to set the <code>next</code>  reference of the new node to the existing node. Next, we have to check if the existing node has a reference to a previous node, if it doesn't we can assume it is the <code>head</code> of the list and as such needs to be replaced by the new node. If the existing node was not the <code>head</code> then we need to update the references to maintain the double link references. Although this doesn't seem like <em>that</em> much code, the null checking and special casing make the code considerably more complex. So, what could we do to make this code simpler....  </p>
+<h3 id="using-a-sentinel-node">Using a sentinel node<a class="headerlink" href="#using-a-sentinel-node" title="Permanent link">¶</a></h3>
+<p><img alt="sentinal_doubly_linked_list.jpg.jpeg" src="../images/sentinal_doubly_linked_list.jpg.jpeg"/></p>
+<p>A sentinel node replaces the head and tail nodes and logically become both the start and end of the list effectivly creating a circular list.</p>
+<p>We initialse our class with a sentinal node and have it self reference itself, with previous and next referecing the same sentinal node.</p>
+<pre><code class="language-python">class DLLWithSentinel:
+    def __init__(self):  
+        self._sentinel: Node = Node()  
+        self._sentinel.next = self._sentinel  
+        self._sentinel.prev = self._sentinel
+
+    def insert_before(self, existing_node: Node, new_node: Node):  
+        new_node.next = existing_node  
+        new_node.prev = existing_node.prev  
+        existing_node.prev.next = new_node  
+        existing_node.prev = new_node  
+
+    def insert_first(self, new_node: Node):  
+        self.insert_after(self._sentinel, new_node)
+</code></pre>
+<p>At this point the sentinal node is the both the head and tail so this makes logical sense and conveiniently removes any <code>None</code> values. This drastically simplifies the code for <code>insert_first</code> and <code>insert_before</code> and in the full code listings below this is even more apparent.</p>
+<h3 id="full-code-for-both-implementations">Full code for both implementations<a class="headerlink" href="#full-code-for-both-implementations" title="Permanent link">¶</a></h3>
+<pre><code class="language-python">from typing import Optional  
+
+from typing_extensions import Self  
+
+
+class Node:  
+    def __init__(self, value: Optional[any] = None):  
+        self.prev: Optional[Self] = None  
+        self.next: Optional[Self] = None  
+        self.value: any = value  
+
+
+class DLL:  
+    """  
+    Doubly Linked List implementation using null terminators    
+    to identify the first and last nodes.  
+    If a node does not have a previous node, 
+    then it is the first.    
+    If a node does not have a next node, then it is the last.    
+    """  
+    def __init__(self):  
+        self.first: Optional[Node] = None  
+        self.last: Optional[Node] = None  
+
+    def insert_after(self, existing_node: Node, new_node: Node):  
+        new_node.prev = existing_node  
+        if not existing_node.next:  
+            self.last = new_node  
+        else:  
+            new_node.next = existing_node.next  
+            new_node.next.prev = new_node  
+        existing_node.next = new_node  
+
+    def insert_before(self, existing_node: Node, new_node: Node):  
+        new_node.next = existing_node  
+        if not existing_node.prev:  
+            self.first = new_node  
+        else:  
+            new_node.prev = existing_node.prev  
+            new_node.prev.next = new_node  
+        existing_node.prev = new_node  
+
+    def insert_first(self, new_node: Node):  
+        if not self.first:  
+            self.first = new_node  
+            self.last = new_node  
+            new_node.prev = None  
+            new_node.next = None  
+        else:  
+            self.insert_before(self.first, new_node)  
+
+    def insert_last(self, new_node: Node):  
+        if not self.last:  
+            # if there is not a `last` node then there 
+            # is not a `first` node,  
+            # so we can simply insert at the beginning
+            # self.insert_first(new_node)  
+        else:  
+            self.insert_after(self.last, new_node)  
+
+    def remove(self, node: Node):  
+        if not node.prev:  
+            self.first = node.next  
+        else:  
+            node.prev.next = node.next  
+
+        if not node.next:  
+            self.last = node.prev  
+        else:  
+            node.next.prev = node.prev  
+
+    def find(self, value: any, *, forwards=True, node: Optional[Node] = None) -&gt; any:  
+        node = self.first if node is None else node  
+        while node:  
+            if node.value == value:  
+                return node  
+            node = node.next if forwards else node.prev  
+
+
+class DLLWithSentinel:  
+    """  
+    Doubly linked list using a sentinel node.  
+    The use of a sentinel node removes all the null checks
+    and greatly simplifies the algorithms for inserting and removing nodes.  
+    The sentinel node also joins the first and last nodes together creating 
+    a circular list of nodes    
+    """  
+    def __init__(self):  
+        self._sentinel: Node = Node()  
+        self._sentinel.next = self._sentinel  
+        self._sentinel.prev = self._sentinel  
+
+    @property  
+    def first(self):  
+        return self._sentinel.next  
+
+    @property  
+    def last(self):  
+        return self._sentinel.prev  
+
+    def insert_after(self, existing_node: Node, new_node: Node):  
+        new_node.prev = existing_node  
+        new_node.next = existing_node.next  
+        existing_node.next.prev = new_node  
+        existing_node.next = new_node  
+
+    def insert_before(self, existing_node: Node, new_node: Node):  
+        new_node.next = existing_node  
+        new_node.prev = existing_node.prev  
+        existing_node.prev.next = new_node  
+        existing_node.prev = new_node  
+
+    def insert_first(self, new_node: Node):  
+        self.insert_after(self._sentinel, new_node)  
+
+    def insert_last(self, new_node: Node):  
+        self.insert_before(self._sentinel, new_node)  
+
+    def remove(self, node: Node):  
+        if node is self._sentinel:  
+            raise Exception("sentinel node cannot be removed")  
+
+        node.prev.next = node.next  
+        node.next.prev = node.prev  
+
+    def find(self, value: any, *, forwards=True, node: Optional[Node] = None) -&gt; any:  
+        node = self.first if node is None else node  
+        while node != self._sentinel:  
+            if node.value == value:  
+                return node  
+            node = node.next if forwards else node.prev
+</code></pre>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Text Formatting" class="md-footer__link md-footer__link--prev" href="../../Features/Text%20Formatting/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              Text Formatting
+            </div>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>
