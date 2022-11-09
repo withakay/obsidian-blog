@@ -2,6 +2,8 @@ site_name: Thoughts unlimited
 
 theme:
     name: 'material'
+    icon:
+      logo: material/weather-sunset-down
     palette:
 
     # Light mode

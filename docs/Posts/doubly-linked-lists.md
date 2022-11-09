@@ -79,6 +79,8 @@ At this point the sentinal node is the both the head and tail so this makes logi
 
 ### Full code for both implementations
 
+(also via [this gist](https://gist.github.com/withakay/af8bdf8b841d099e18dec17e19382d22))
+
 ```python
 from typing import Optional  
   
@@ -212,3 +214,5 @@ class DLLWithSentinel:
                 return node  
             node = node.next if forwards else node.prev
 ```
+
+### Tags: #datastructures #cs #python
